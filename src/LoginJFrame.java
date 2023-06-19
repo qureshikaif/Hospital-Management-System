@@ -1,16 +1,24 @@
 import java.sql.*;
 import java.awt.*;
-import java.awt.geom.RoundRectangle2D;
 import javax.swing.JOptionPane;
 public class LoginJFrame extends javax.swing.JFrame {
 
-    /**
-     * Creates new form LoginJFrame
-     */
     public LoginJFrame() {
         initComponents();
+        centerFrame();
         
     }
+    private void centerFrame() {
+    Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+    int screenWidth = screenSize.width;
+    int screenHeight = screenSize.height;
+    int frameWidth = getWidth();
+    int frameHeight = getHeight();
+    int x = (screenWidth - frameWidth) / 2;
+    int y = (screenHeight - frameHeight) / 2;
+    setLocation(x, y);
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -30,6 +38,7 @@ public class LoginJFrame extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setLocation(new java.awt.Point(0, 0));
 
         jPanel2.setBackground(new java.awt.Color(51, 102, 255));
         jPanel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -38,13 +47,13 @@ public class LoginJFrame extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setForeground(new java.awt.Color(51, 102, 255));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI Black", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(51, 102, 255));
         jLabel1.setText("Welcome!");
 
         usernameFieldLogin.setBackground(new java.awt.Color(255, 255, 255));
         usernameFieldLogin.setForeground(new java.awt.Color(51, 102, 255));
-        usernameFieldLogin.setText("Username");
+        usernameFieldLogin.setText("Full Name");
         usernameFieldLogin.setBorder(null);
         usernameFieldLogin.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -106,7 +115,7 @@ public class LoginJFrame extends javax.swing.JFrame {
 
         roleField.setBackground(new java.awt.Color(255, 255, 255));
         roleField.setForeground(new java.awt.Color(0, 102, 204));
-        roleField.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Doctor", "Patient" }));
+        roleField.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Doctor", "Patient", "Admin" }));
         roleField.setBorder(null);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -118,26 +127,23 @@ public class LoginJFrame extends javax.swing.JFrame {
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(82, Short.MAX_VALUE)
+                .addContainerGap(104, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(70, 70, 70))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(roleField, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(passwordFieldLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(usernameFieldLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel3)))
-                        .addGap(100, 100, 100))))
+                    .addComponent(jLabel1)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(jLabel5)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(roleField, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(passwordFieldLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(usernameFieldLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(jLabel2)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel3))))
+                .addGap(88, 88, 88))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -162,7 +168,7 @@ public class LoginJFrame extends javax.swing.JFrame {
                     .addComponent(jLabel3))
                 .addGap(35, 35, 35)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(128, Short.MAX_VALUE))
         );
 
         jLabel4.setBackground(new java.awt.Color(255, 255, 255));
@@ -207,62 +213,74 @@ public class LoginJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_passwordFieldLoginActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        String username = usernameFieldLogin.getText();
-String password = new String(passwordFieldLogin.getPassword());
-String role = (String) roleField.getSelectedItem();
+        Users user = new Users();
+        user.setUsername(usernameFieldLogin.getText());
+        user.setPassword(new String(passwordFieldLogin.getPassword()));
+        String role = (String) roleField.getSelectedItem();
+        try {
+        Connection connection = DriverManager.getConnection("jdbc:ucanaccess://C:\\Users\\LENOVO\\OneDrive\\Documents\\NetBeansProjects\\Hospital-Management-System\\HMS.accdb");
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
 
-try {
-    Connection connection = DriverManager.getConnection("jdbc:ucanaccess://C:\\Users\\LENOVO\\OneDrive\\Documents\\NetBeansProjects\\Hospital-Management-System\\HMS.accdb");
-    PreparedStatement statement = null;
-    ResultSet resultSet = null;
-
-    if (role.equalsIgnoreCase("doctor")) {
+        if (role.equalsIgnoreCase("doctor")) {
         statement = connection.prepareStatement("SELECT * FROM Doctors WHERE Username = ? AND Password = ?");
-        statement.setString(1, username);
-        statement.setString(2, password);
+        statement.setString(1, user.getUsername());
+        statement.setString(2, user.getPassword());
         resultSet = statement.executeQuery();
 
-        if (resultSet.next()) {
+            if (resultSet.next()) {
             // Valid doctor credentials
             JOptionPane.showMessageDialog(null, "Doctor login successful!");
             DoctorJFrame DFrame = new DoctorJFrame();
-            DFrame.setName(username);
+            DFrame.setName(user.getUsername());
             dispose();
             DFrame.setVisible(true);
-        } else {
+            } 
+            else {
             // Invalid doctor credentials
             JOptionPane.showMessageDialog(null, "Invalid doctor login credentials!");
-        }
-    } else if (role.equalsIgnoreCase("patient")) {
+            }
+    } 
+        else if (role.equalsIgnoreCase("patient")) {
         statement = connection.prepareStatement("SELECT * FROM Patients WHERE Username = ? AND Password = ?");
-        statement.setString(1, username);
-        statement.setString(2, password);
+        statement.setString(1, user.getUsername());
+        statement.setString(2, user.getPassword());
         resultSet = statement.executeQuery();
 
-        if (resultSet.next()) {
-            // Valid patient credentials
+            if (resultSet.next()) {
             JOptionPane.showMessageDialog(null, "Patient login successful!");
             PatientJFrame PFrame = new PatientJFrame();
-            PFrame.setName(username);
+            PFrame.setName(user.getUsername());
             dispose();
             PFrame.setVisible(true);
-        } else {
-            // Invalid patient credentials
+            } 
+            else {
             JOptionPane.showMessageDialog(null, "Invalid patient login credentials!");
+            }
         }
-    }
+        else if (role.equalsIgnoreCase("admin")) {
+            Admin admin = new Admin();
+            if (user.getUsername().equalsIgnoreCase(admin.getNAME()) && user.getPassword().equalsIgnoreCase(admin.getPASSWORD())) {
+                JOptionPane.showMessageDialog(null, "Admin logged in successful!");
+                AdminJFrame AFrame = new AdminJFrame();
+                this.dispose();
+                AFrame.setVisible(true);
+            }
+            else {
+                JOptionPane.showMessageDialog(this,"Invalid admin credentials");
+            }
+        }
+        
 
     if (resultSet != null) {
         resultSet.close();
     }
-    if (statement != null) {
-        statement.close();
-    }
     connection.close();
-} catch (SQLException ex) {
-    ex.printStackTrace();
-    JOptionPane.showMessageDialog(null, "An error occurred while connecting to the database!");
-}
+ } 
+    catch (SQLException ex) {
+        ex.printStackTrace();
+        JOptionPane.showMessageDialog(null, "An error occurred while connecting to the database!");
+   }
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -273,7 +291,7 @@ try {
     }//GEN-LAST:event_jLabel2MouseClicked
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-        
+        /* No code */
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
@@ -290,9 +308,6 @@ try {
         passwordFieldLogin.setText("");
     }//GEN-LAST:event_passwordFieldLoginMouseClicked
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -321,6 +336,7 @@ try {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new LoginJFrame().setVisible(true);
+                
             }
         });
     }
